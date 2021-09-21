@@ -1,0 +1,3 @@
+Hola aqui estamos 
+link número 1 : https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/
+link número 2 : https://www.it-swarm-es.com/es/node.js/tiene-problemas-para-entender-como-funciona-fs.stat/941185365/

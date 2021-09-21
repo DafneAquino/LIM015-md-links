@@ -1,4 +1,29 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "description": "Librería para ...",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DafneAquino/LIM015-md-links.git"
+  },
+  "author": "Dafne Aquino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DafneAquino/LIM015-md-links/issues"
+  },
+  "homepage": "https://github.com/DafneAquino/LIM015-md-links#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "jest": "^27.1.1"
+  }
 }
