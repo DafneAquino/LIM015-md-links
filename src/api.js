@@ -4,9 +4,6 @@ const path = require('path');
 // Validar si existe la ruta
 const routeExistence = (route) => fs.existsSync(route);
 
-// console.log(routeExistence('D:\\Laboratoria\\LIM015-md-links\\README.md'))
-// console.log(routeExistence('prueba\\text.md'))
-
 // Validar si la ruta es absoluta o no
 const pathValidate = (route) => path.isAbsolute(route); // Devuelve un booleano true or false
 
@@ -16,20 +13,28 @@ const pathValidate = (route) => path.isAbsolute(route); // Devuelve un booleano 
 // Validar y convertir si la ruta no es absoluta
 const routeState = (route) => !path.isAbsolute(route) ? path.resolve(route) : route
 
-// Validar si la ruta es una carpeta o directorio
+// Validar si la ruta es una carpeta 
 const routeIsDir =(route) => fs.statSync(route).isDirectory();
 
 // Validar si es una archivo
 const routeIsFile =(route) => fs.statSync(route).isFile();
 
-// Validar si  es un archivo m.d
+// Validar en que extension acaba la ruta (a futuro para reconocer si  es un archivo m.d)
 const routeIsMd = (route) => path.extname(route)
-console.log(routeIsMd('D:\\Laboratoria\\LIM015-md-links\\README.md'));
+// console.log(routeIsMd('D:\\Laboratoria\\LIM015-md-links\\README.md'));
 
-// Recorrer los archivos en caso sea una carpeta
+// Leer el contenido de un directorio o carpeta (devuelve rutas fragmentadas de los archivos o carpetas que tiene ese directorio)
+const readDir = (route) => fs.readdirSync(route);
+// console.log(readDir('D:/Laboratoria/LIM015-md-links/prueba'));
 
+// Unir dos rutas fragmentadas: ruta del directorio + ruta de cada uno de los archivos
+const joinPaths = (route) => {
+    return readDir(route).map((elemento) => path.join(route, elemento));
+};
+console.log(joinPaths('D:/Laboratoria/LIM015-md-links/prueba'));
 
-// Leer archivos de una ruta fija
+// Funcion para unir la ruta de archivos .md segmentados para que conforme su ruta total
+
 
 
 // 
