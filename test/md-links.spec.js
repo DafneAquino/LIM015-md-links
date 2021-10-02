@@ -8,7 +8,7 @@ const { routeExistence,
   joinPaths,
   mdContent,
   mdFilesPath,
-  mdLinksProp
+  getStatusLink
  } = require('../src/api.js');
 
 describe('routeExistence', () => {
@@ -105,8 +105,8 @@ describe('mdFilesPath', () => {
   });
 });
 
-describe('mdLinksProp', () => {
+describe('getStatusLink', () => {
   it('', ()=> {
-    expect(mdLinksProp).toBe()
+    expect(getStatusLink).toBe()
   });
 });
