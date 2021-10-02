@@ -1,2 +1,0 @@
-- [__Recursividad:__](https://medium.com/laboratoria-how-to/no-todo-es-iterar-cuando-la-recursividad-ataca-8d8fcdb529a)
-- [__Lupo Recursividad:__](https://medium.com/laboratoria-developers/recursi%C3%B3n-o-recursividad-ec8f1a359727)

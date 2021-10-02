@@ -5,7 +5,10 @@ const { routeExistence,
   routeIsFile,
   routeExtension,
   readDir,
-  joinPaths
+  joinPaths,
+  mdContent,
+  mdFilesPath,
+  mdLinksProp
  } = require('../src/api.js');
 
 describe('routeExistence', () => {
@@ -53,10 +56,10 @@ describe('routeIsDir', () => {
 
 describe('routeIsFile', () => {
   it('should return true if the route is a file', () => {
-    expect(routeIsFile('D:\\Laboratoria\\LIM015-md-links\\prueba\\text.md')).toBe(true);
+    expect(routeIsFile('D:\\Laboratoria\\LIM015-md-links\\prueba\\text.md')).toBeTruthy;
   });
   it('should return false if the route is not a file', () => {
-    expect(routeIsFile('D:\\Laboratoria\\LIM015-md-links\\prueba')).toBe(false);
+    expect(routeIsFile('D:\\Laboratoria\\LIM015-md-links\\prueba')).toBeFalsy;
   });
 });
 
@@ -68,15 +71,42 @@ describe('routeExtension', () => {
 
 describe('readDir', () => {
   it('should return an array of routes who are inside of the directory', () => {
-    expect(readDir('D:\\Laboratoria\\LIM015-md-links\\prueba')).toEqual(['links.txt', 'text.md']);
+    expect(readDir('D:\\Laboratoria\\LIM015-md-links\\prueba')).toEqual(['carpeta1', 'carpeta2', 'links.txt', 'text.md']);
   });
 });
 
 describe('joinPaths', () => {
   it('should return an array with absolute routes of their files', () => {
     expect(joinPaths('D:\\Laboratoria\\LIM015-md-links\\prueba')).toEqual([
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1',
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta2',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\links.txt',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\text.md'
-    ])
+    ]);
+  });
+});
+
+describe('mdContent', () => {
+  it('is a function', () => {
+    expect(typeof mdContent).toBe('function')
+  });
+  
+  it('should return a string with all the content of the file', () => {
+    expect(mdContent('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md')).toEqual(`LINKS DE PRUEBA
+    - [linknmero1](https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/)
+    - [linknumero2](https://www.it-swarm-es.com/es/node.js/tiene-problemas-para-entender-como-funciona-fs.stat/941185365/)`
+    );
+  });
+});
+
+describe('mdFilesPath', () => {
+  it('', ()=> {
+    expect(mdFilesPath).toBe()
+  });
+});
+
+describe('mdLinksProp', () => {
+  it('', ()=> {
+    expect(mdLinksProp).toBe()
   });
 });

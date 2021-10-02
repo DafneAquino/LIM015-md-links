@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const fetch = require('node-fetch');
+const { resolve } = require('dns');
+const { fail } = require('assert');
 
 // Validar si existe la ruta
 const routeExistence = (route) => fs.existsSync(route);
@@ -34,8 +37,8 @@ const joinPaths = (route) => {
 // console.log(joinPaths('D:/Laboratoria/LIM015-md-links/prueba'));
 
 // Leer contenido de archivos .md
-const mdContent =(route) =>  fs.readFileSync(route, 'utf8')/* .toString(); */
-// console.log(mdContent('D:/Laboratoria/LIM015-md-links/prueba/carpeta1/condicionales.md'))
+const mdContent =(route) =>  fs.readFileSync(route,'utf8')/* .toString() */;
+// console.log(mdContent('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md'));
 
 /* Función recursiva para obtener la ruta absoluta de archivos '.md' 
 (al obtener la ruta de archivos x la via normal su ruta es relativa x ejem solo devuelve: 'links.md') */ 
@@ -54,39 +57,68 @@ const mdFilesPath = (route) => {
 };
 // console.log(mdFilesPath('D:/Laboratoria/LIM015-md-links/prueba'));
 
-// Sacar los links de los archivos '.md'
-const regexAllLink = /^\[([\w\s\d]+)\]\(((?:\/|https?:\/\/)[\w\d./?=#]+)\)$/g;
+// Sacar los links con sus propiedades de los archivos '.md' en un array
+const regexAllLink = /\[([^\[]+)\](\(.*\))/gm;
 const regexText = /\[([\w\s\d.()]+)\]/g;
-const regexLink = /^\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)$/g;
+const regexLink = /\((((ftp|http|https):\/\/)[\w\d\s./?=#&_%~,\-.:]+)\)/g;
 
-const mdLinksProp = (route) => {
-    const propsLinkMd = [];// array donde guardaremos los datos de los links
+const propsLink = (route) => {
+    const arrayProp = [];// array donde guardaremos los datos de los links
     mdFilesPath(route).forEach((eachRouteMd) => {
         const readEachMd = mdContent(eachRouteMd);// Obtiene o lee cada link completo del archivo .md evaluado
-        console .log(readEachMd)
+        // console .log(readEachMd)
         const fitLinkAll = readEachMd.match(regexAllLink);// Nos da un array con links que cumplen con la estructura de acuerdo a la exp regular declarada 
-        // console .log(fitLinkAll);
+        // console.log(fitLinkAll);
         if(readEachMd.length > 0 && regexAllLink.test(readEachMd) === true){
             fitLinkAll.forEach((e)=>{
                 const linkProp = { // objetto donde iran las propiedades del link .md
-                    href: e.match(regexLink),
-                    text: e.match(regexText),
-                    file: eachRouteMd
+                    href: e.match(regexLink).toString().slice(1,-1),
+                    text: e.match(regexText).join().slice(1,-1),
+                    file: eachRouteMd,
                 };
-                console.log(linkProp);
-                propsLinkMd.push(linkProp); // se le agrega el objeto de prop al array vacio
+                // console.log(typeof(linkProp.text))
+                // console.log(linkProp);
+                arrayProp.push(linkProp); // se le agrega el objeto de prop al array vacio
             });
         };
     });
-    return propsLinkMd;
+    return arrayProp;
 };
-console.log(mdLinksProp('D:/Laboratoria/LIM015-md-links/prueba'));
-//NO ESTAN FUNCIONANDO LOS PATRONES DE LAS EXPRESIONES REGULARES , BUSCAR NUEVOS PATRONES
+// console.log(propsLink('D:/Laboratoria/LIM015-md-links/prueba'));
 
+// Función más estructurada para obtener las propiedades completas de los links en caso si sean validadas las options
+const getStatusLink = (arrayPropLinks) => {
+    const arrayLinks = arrayPropLinks.map((elemento) => 
+      fetch(elemento.href)
+        .then((res) => {
+          const data = {
+            href: elemento.href,
+            text: elemento.text, // jala el key "text" del objeto anterior 
+            file: elemento.file,
+            status: res.status, // el método status pertenece a fetch y devuelve un number 
+            message: res.status >= 200 && res.status <= 299 ? 'OK' : 'fail', // Normalmente cuando el status de la peticion http da un numero con base 2 significa que la peticion ha tenido éxito
+          };
+          return data;
+          /* return {
+            ...arrayPropLinks,
+            status: res.status,
+            message: res.status >199 && res.status < 299 ? 'OK' : 'fail',
+          } */
+        }).catch((error) => {
+          const data = {
+            href: elemento.href,
+            text: elemento.text,
+            file: elemento.file,
+            status: 'Request error. ' + error,
+            ok: 'fail',
+          };
+          return (data);
+        }));
+    return Promise.all(arrayLinks);
+  };
 
-
-
-// 
+// console.log(getStatusLink(propsLink('D:/Laboratoria/LIM015-md-links/prueba')));
+getStatusLink(propsLink('D:/Laboratoria/LIM015-md-links/prueba')).then( res => console.log(res)).catch( error => console.log(error));
 
 module.exports = {
     routeExistence,
@@ -96,5 +128,9 @@ module.exports = {
     routeIsDir,
     routeExtension,
     readDir,
-    joinPaths
+    joinPaths,
+    mdContent,
+    mdFilesPath,
+    propsLink,
+    getStatusLink
 }; 
