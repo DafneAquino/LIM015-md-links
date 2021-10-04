@@ -1,0 +1,1 @@
+[link](https://nodejs.org/api/fs.html#fs_class_fs_statss)

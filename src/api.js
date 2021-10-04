@@ -35,7 +35,7 @@ const joinPaths = (route) => {
 // console.log(joinPaths('D:/Laboratoria/LIM015-md-links/prueba'));
 
 // Leer contenido de archivos .md
-const fileContent =(route) =>  fs.readFileSync(route)/* ,'utf8') */.toString();
+const fileContent =(route) =>  fs.readFileSync(route,'utf8');/* .toString() */
 // console.log(fileContent('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md'));
 
 /* Función recursiva para obtener la ruta absoluta de archivos '.md' 

@@ -1,3 +1,4 @@
+const fetch = require('../__mock__/mock_fetch.js');
 const { routeExistence,
   pathValidate,
   routeState,
@@ -92,12 +93,9 @@ describe('fileContent', () => {
     expect(typeof fileContent).toBe('function')
   });
   
-  it.skip('should return a string with all the content of the file', () => {
-    expect(fileContent('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md')).toEqual/* not.toBe */(`
-    LINKS DE PRUEBA
-    - [linknmero1](https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-argumentsss/)
-    - [linknumero2](https://www.it-swarm-es.com/es/node.js/tiene-problemas-para-entender-como-funciona-fs.stat/941185365/)`
-    );
+  it('should return a string with all the content of the file', () => {
+    const result= fileContent('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md');
+    expect(result.trim()).toEqual(`[linknumero2](https://www.it-swarm-es.com/es/node.js/tiene-problemas-para-entender-como-funciona-fs.stat/941185365/)`);
   });
 });
 
@@ -105,6 +103,7 @@ describe('mdFilesPath', () => {
   it('should return an array of absolute paths of files .md', ()=> {
     expect(mdFilesPath('D:/Laboratoria/LIM015-md-links/prueba')).toEqual([
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md',
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\fail.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\happy.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta2\\documentacion.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta2\\succes.md',
@@ -137,7 +136,47 @@ describe('propsLink', () => {
 });
 
 describe('getStatusLink', () => {
-  it('', ()=> {
-    expect(getStatusLink).toBe()
+  it('should return an array with objects of properties\'s links with their status', ()=> {
+    const input = [
+      {
+        href: 'https://nodejs.org/api/fs.html#fs_class_fs_stats',
+        text: 'FS',
+        file: 'D:/Laboratoria/LIM015-md-links/prueba/carpeta1/happy.md',
+      }
+    ];
+
+    const output = [
+      {
+        href: 'https://nodejs.org/api/fs.html#fs_class_fs_stats',
+        text: 'FS',
+        file: 'D:/Laboratoria/LIM015-md-links/prueba/carpeta1/happy.md',
+        status: 200,
+        message: 'OK'
+      }
+    ];
+    fetch.mockResolvedValue(input);
+    return getStatusLink(input).then((e)=>{ expect(e).toEqual(output)});
   });
+
+  it('should return an array with objects of properties\'s links with their fail status', () => {
+    const input =[
+      {
+        href: 'https://nodejs.org/api/fs.',
+        text: 'link',
+        file: 'D:/Laboratoria/LIM015-md-links/prueba/carpeta1/fail.md',
+      }
+    ]
+
+    const output = [
+      {
+        href: 'https://nodejs.org/api/fs.',
+        text: 'link',
+        file: 'D:/Laboratoria/LIM015-md-links/prueba/carpeta1/fail.md',
+        status: 404,
+        message: 'fail'
+      }
+    ];
+    fetch.mockResolvedValue(input);
+    return getStatusLink(input).then((e)=>{ expect(e).toEqual(output)});
+  })
 });
