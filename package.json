@@ -1,7 +1,7 @@
 {
   "name": "md-links",
   "version": "0.1.0",
-  "description": "Librería para ...",
+  "description": "Librería para comprobar y/o validar links de archivos mark down y obtener sus estadísticas",
   "main": "index.js",
   "directories": {
     "test": "test"
