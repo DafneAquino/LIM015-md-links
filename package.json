@@ -9,6 +9,9 @@
   "scripts": {
     "test": "jest --verbose --coverage"
   },
+  "bin": {
+    "md-links": "src/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DafneAquino/LIM015-md-links.git"
@@ -24,6 +27,7 @@
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "jest": "^27.1.1",
     "node-fetch": "^2.6.0"
   }

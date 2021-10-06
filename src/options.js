@@ -13,3 +13,23 @@ const brokenLinks = (arrayLinks) => {
     const broken = arrayLinks.filter((e)=> e.status >= 400 );
     return `Broken: ${broken.lenght}`
 };
+
+const help = `
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                       **HELP**                                                       ║
+╠══════════════════════════════════════╦═══════════════════════════════════════════════════════════════════════════════╣
+║ ${color.green('--validate')}         ║ Show the link, its text, its route, its status number and its status message. ║
+╠══════════════════════════════════════╬═══════════════════════════════════════════════════════════════════════════════╣
+║ ${color.green('--stats')}            ║ Show the total links and the unique links.                                    ║
+╠══════════════════════════════════════╬═══════════════════════════════════════════════════════════════════════════════╣
+║ ${color.green('--stats --validate')} ║ Show the total, unique and broken links.                                      ║
+╚══════════════════════════════════════╩═══════════════════════════════════════════════════════════════════════════════╝
+${colors.yellow(`Use this structure : mdLinks <route> <command> to run the cli. 
+But also you can write only mdLinks <route> and you will obtain the link, its text, its file`)}` 
+
+module.exports = {
+    totalLinks,
+    uniqueLinks,
+    brokenLinks,
+    help,
+  };

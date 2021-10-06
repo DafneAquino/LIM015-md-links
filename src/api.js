@@ -110,7 +110,7 @@ const getStatusLink = (arrayPropLinks) => {
             text: elemento.text,
             file: elemento.file,
             status: 'Request error. ' + error,
-            ok: 'fail',
+            message: 'fail',
           };
           return (data);
         }));
