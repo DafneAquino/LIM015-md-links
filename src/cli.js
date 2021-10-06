@@ -4,7 +4,7 @@ const { mdLinks } = require('./mdlinks');
 const option = require('./options');
 const colors = require('colors');
 
-// Para que a futuro la matriz de argumentos inicie en el índice 2 como posición
+// Para que la matriz de argumentos se corte hasta el índice 2 (y el indice 3 sea como indice  0)
 const arguments = process.argv.slice(2);
 
 // Si el usuario pone un argumento
