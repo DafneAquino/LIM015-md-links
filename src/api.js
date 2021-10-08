@@ -51,11 +51,12 @@ const mdFilesPath = (route) => {
     return arrayMdFiles;
 };
 
-// Sacar los links con sus propiedades de los archivos '.md' en un array
+// Expresiones regulares para reconocer la estructura de los links
 const regexAllLink = /\[([^\[]+)\](\(.*\))/gm;
 const regexText = /\[([\w\s\d.()]+)\]/g;
 const regexLink = /\((((ftp|http|https):\/\/)[\w\d\s./?=#&_%~,\-.:]+)\)/g;
 
+// Función para obtener los links con sus propiedades de los archivos '.md' en un array
 const propsLink = (route) => {
     const arrayProp = [];// array donde guardaremos los datos de los links
     mdFilesPath(route).forEach((eachRouteMd) => {
