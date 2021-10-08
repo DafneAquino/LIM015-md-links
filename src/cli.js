@@ -4,17 +4,13 @@ const { mdLinks } = require('./mdlinks');
 const option = require('./options');
 const colors = require('colors');
 
-// Para que la matriz de argumentos se corte hasta el índice 2 (y el indice 3 sea como indice  0)
+// Para que la matriz de argumentos se corte hasta el índice 2 (y a futuro el indice 3 sea como indice  0)
 const arguments = process.argv.slice(2);
 
 // Si el usuario pone un argumento
 if (arguments.length === 1){
     mdLinks(arguments[0], { validate:false })
-    .then(resul=>resul.forEach(e=> console.log(
-        `link : ${colors.blue(e.href)}
-text: ${colors.yellow(e.text)}
-file: ${colors.cyan(e.file)}`
-     )))
+    .then(resul=>resul.forEach(e=> console.log(` ${colors.blue(e.href)} | ${colors.yellow(e.text)} | ${colors.cyan(e.file)}`)))
     .catch(err => console.log(err));
 }
 
@@ -25,20 +21,15 @@ if(arguments.length === 2){
         case '--validate':
             mdLinks(arguments[0], { validate: true })
             .then(res => res.forEach(el =>
-                console.log(`link : ${colors.blue(el.href)} 
-text: ${colors.yellow(el.text)} 
-file: ${colors.cyan(el.file)} 
-status: ${colors.green(el.status)} 
-message: ${colors.yellow(el.message)}`
-             )))
+                console.log(`${colors.blue(el.href)} ${colors.yellow(el.text)}  ${colors.cyan(el.file)}  ${colors.green(el.status)}  ${colors.yellow(el.message)}`)))
             .catch(err => console.log(err));
         break;
 
         case '--stats':
             mdLinks(arguments[0], { validate: true })
             .then(res=> console.log(
-                `${colors.blue(option.totalLinks(res))} 
-${colors.yellow(option.uniqueLinks(res))}`
+`Total: ${colors.blue(option.totalLinks(res))} 
+Unique: ${colors.yellow(option.uniqueLinks(res))}`
              ))
             .catch(err => console.log(err));
         break;

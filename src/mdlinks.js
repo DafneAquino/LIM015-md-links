@@ -10,7 +10,6 @@ const mdLinks = (path, option ={}) =>
                 resolve(linkProp);
             } else {
                 const statusLink = functions.getStatusLink(linkProp);
-                // statusLink.then((resul) => console.log(resul));
                 resolve(statusLink);
             }
         }
