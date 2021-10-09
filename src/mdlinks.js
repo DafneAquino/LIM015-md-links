@@ -1,7 +1,7 @@
 const functions = require ('./api.js');
 
-const mdLinks = (path, option ={}) => 
-    new Promise ((resolve, reject) => {
+const mdLinks = (path, option ={}) => {
+    return new Promise ((resolve, reject) => {
         if(!functions.routeExistence(path)){
             reject('Path does not exist');
         } else {
@@ -15,11 +15,13 @@ const mdLinks = (path, option ={}) =>
         }
 
     });
+}
 
 
-// const resultado = mdLinks('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1', { validate: false })
+// const resultado = mdLinks('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1', { validate: true })
 // resultado
 // .then((resul) => console.log (resul))
 // .catch((err)=> console.log(err));
 
-module.exports = { mdLinks }
+
+module.exports = { mdLinks };
