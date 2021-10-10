@@ -18,7 +18,7 @@ const mdLinks = (path, option ={}) => {
 }
 
 
-// const resultado = mdLinks('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1', { validate: true })
+// const resultado = mdLinks('D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1', { validate: false })
 // resultado
 // .then((resul) => console.log (resul))
 // .catch((err)=> console.log(err));

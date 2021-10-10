@@ -10,7 +10,7 @@ const arguments = process.argv.slice(2);
 // Si el usuario pone un argumento
 if (arguments.length === 1){
     mdLinks(arguments[0], { validate:false })
-    .then(resul=>resul.forEach(e=> console.log(` ${colors.blue(e.href)} | ${colors.yellow(e.text)} | ${colors.cyan(e.file)}`)))
+    .then(resul=>resul.forEach(e=> console.log(` ${e.href} ${colors.green(e.text)} ${colors.yellow(e.file)}`)))
     .catch(err => console.log(err));
 }
 
@@ -21,14 +21,14 @@ if(arguments.length === 2){
         case '--validate':
             mdLinks(arguments[0], { validate: true })
             .then(res => res.forEach(el =>
-                console.log(`${colors.blue(el.href)} ${colors.yellow(el.text)}  ${colors.cyan(el.file)}  ${colors.green(el.status)}  ${colors.yellow(el.message)}`)))
+                console.log(`${el.href} ${colors.green(el.text)} ${colors.yellow(el.file)} ${colors.green(el.status)} ${colors.yellow(el.message)}`)))
             .catch(err => console.log(err));
         break;
 
         case '--stats':
             mdLinks(arguments[0], { validate: true })
             .then(res=> console.log(
-`Total: ${colors.blue(option.totalLinks(res))} 
+`Total: ${colors.yellow(option.totalLinks(res))} 
 Unique: ${colors.yellow(option.uniqueLinks(res))}`
              ))
             .catch(err => console.log(err));
@@ -49,9 +49,9 @@ if(arguments.length === 3){
     if ( arguments[1]=== '--stats' && arguments[2] === '--validate'){
         mdLinks(arguments[0], { validate: true })
             .then(res=> console.log(
-`Total: ${colors.blue(option.totalLinks(res))} 
+`Total: ${colors.yellow(option.totalLinks(res))} 
 Unique: ${colors.yellow(option.uniqueLinks(res))} 
-Broken: ${colors.cyan(option.brokenLinks(res))}`
+Broken: ${colors.yellow(option.brokenLinks(res))}`
             ))
             .catch(err => console.log(err));
     }

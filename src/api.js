@@ -25,6 +25,7 @@ const routeExtension = (route) => path.extname(route);
 
 // Leer el contenido de un directorio o carpeta (devuelve rutas fragmentadas de los archivos o carpetas que tiene ese directorio)
 const readDir = (route) => fs.readdirSync(route);
+// console.log(readDir('D:\\Laboratoria\\LIM015-md-links\\prueba'));
 
 // Unir dos rutas fragmentadas: ruta del directorio + ruta de cada uno de los archivos
 const joinPaths = (route) => {
@@ -50,6 +51,7 @@ const mdFilesPath = (route) => {
     };
     return arrayMdFiles;
 };
+// console.log(mdFilesPath('D:/Laboratoria/LIM015-md-links/prueba'));
 
 // Expresiones regulares para reconocer la estructura de los links
 const regexAllLink = /\[([^\[]+)\](\(.*\))/gm;
@@ -71,7 +73,9 @@ const propsLink = (route) => {
                 };
                 arrayProp.push(linkProp); // se le agrega el objeto de prop al array vacio
             });
-        };
+        } else if (!regexAllLink.test(readEachMd)){
+          console.log("No links found");
+        }
     });
     return arrayProp;
 };

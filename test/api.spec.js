@@ -73,7 +73,7 @@ describe('routeExtension', () => {
 
 describe('readDir', () => {
   it('should return an array of routes who are inside of the directory', () => {
-    expect(readDir('D:\\Laboratoria\\LIM015-md-links\\prueba')).toEqual(['carpeta1', 'carpeta2', 'links.txt', 'text.md']);
+    expect(readDir('D:\\Laboratoria\\LIM015-md-links\\prueba')).toEqual([ 'carpeta1', 'carpeta2', 'links.txt', 'nada.md', 'nada2', 'text.md' ]);
   });
 });
 
@@ -83,6 +83,8 @@ describe('joinPaths', () => {
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta2',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\links.txt',
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\nada.md',
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\nada2',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\text.md'
     ]);
   });
@@ -103,10 +105,12 @@ describe('mdFilesPath', () => {
   it('should return an array of absolute paths of files .md', ()=> {
     expect(mdFilesPath('D:/Laboratoria/LIM015-md-links/prueba')).toEqual([
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\condicionales.md',
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\cortos.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\fail.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta1\\happy.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta2\\documentacion.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\carpeta2\\succes.md',
+      'D:\\Laboratoria\\LIM015-md-links\\prueba\\nada.md',
       'D:\\Laboratoria\\LIM015-md-links\\prueba\\text.md'
     ])
   });
