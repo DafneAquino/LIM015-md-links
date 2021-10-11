@@ -29,10 +29,9 @@ consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
 
 ## 3. Instalación y guía de uso de la librería
 
-La libreria se instala mediante la siguiente vía:
+La libreria se instala usando la siguiente vía:
 
  `npm i marklink`
-
 
 Una vez que el usuario tenga instalada la librería *marklink*, va a tener las siguientes herramientas:
 
@@ -55,6 +54,8 @@ Una vez que el usuario tenga instalada la librería *marklink*, va a tener las s
 - Si ingresamos el comando global **md-link** seguido de la **dirección de la ubicación del archivo** y seguido del comando **--help** obtendremos un texto de ayuda como el siguiente:
 
 ![help](flujograma/help.PNG)
+
+Para mayor información visite [MarkLink](https://www.npmjs.com/package/marklink).
 
 ## 4. Características técnicas
 
