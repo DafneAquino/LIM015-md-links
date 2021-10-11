@@ -26,20 +26,35 @@ consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
 ![](flujograma/mdLinks-API.png)
 ![](flujograma/mdLinks-CLI.png)
 
-## 3. Documentación técnica de la librería
 
-- [ ] Puede instalarse via `npm install --marklink <DafneAquino>/md-links`
+## 3. Instalación y guía de uso de la librería
+
+La libreria se instala mediante la siguiente vía:
+
+ `npm install --marklink <DafneAquino>/md-links`
 
 
-## 4. Guía de uso e instalación de la librería
+Una vez que el usuario tenga instalada la librería *marklink*, va a tener las siguientes herramientas:
 
-file
-![](flujograma/file.PNG)
+- En el terminal ingresamos el comando global **md-link** seguido de la **dirección de la ubicación del archivo** y/o carpeta de la cual queremos saber cuales son los links existentes en ese archivo y su texto descriptivo. Ejemplo:
 
-![](flujograma/validate.PNG)
-![](flujograma/stats.PNG)
-![](flujograma/statsYvalidate.PNG)
-![](flujograma/help.PNG)
+![file](flujograma/file.PNG)
+
+- Si ingresamos el comando global **md-link** seguido de la **dirección de la ubicación del archivo** y seguido del comando **--validate** obtendremos las propiedades de los links que encontramos en ese archivo. Ejemplo:
+
+![validate](flujograma/validate.PNG)
+
+- Si ingresamos el comando global **md-link** seguido de la **dirección de la ubicación del archivo** y seguido del comando **--stats** obtendremos la cantidad total de links que encontremos en ese archivo y el total de links unicos encontrados:
+
+![stats](flujograma/stats.PNG)
+
+- Si ingresamos el comando global **md-link** seguido de la **dirección de la ubicación del archivo** y seguido de los comandos **--stats --validate** obtendremos la cantidad total de links que encontremos en ese archivo, el total de links unicos encontrados y el total de links rotos:
+
+![stats y validate](flujograma/statsYvalidate.PNG)
+
+- Si ingresamos el comando global **md-link** seguido de la **dirección de la ubicación del archivo** y seguido del comando **--help** obtendremos un texto de ayuda como el siguiente:
+
+![help](flujograma/help.PNG)
 
 ## 5. Características técnicas
 
@@ -222,3 +237,7 @@ El proyecto se realizó bajo estas características técnicas de javascript y no
   - [Códigos de estado de respuesta HTTP - MDN](https://developer.mozilla.org/es/docs/Web/HTTP/Status)
   - [The Complete Guide to Status Codes for Meaningful ReST APIs - dev.to](https://dev.to/khaosdoctor/the-complete-guide-to-status-codes-for-meaningful-rest-apis-1-5c5)
   </p></details>
+
+## 6. Autora
+
+Dafne Aquino Manyari - LIM015 Laboratoria.
