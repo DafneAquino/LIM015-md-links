@@ -34,14 +34,12 @@ consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
 ## 4. Guía de uso e instalación de la librería
 
 file
-![](flujograma/file.png)
+![](flujograma/file.PNG)
 
-![](flujograma/validate.png)
-![](flujograma/stats.png)
-![](flujograma/statsYvalidate.png)
-![](flujograma/help.png)
-![](flujograma/io.jpg)
-
+![](flujograma/validate.PNG)
+![](flujograma/stats.PNG)
+![](flujograma/statsYvalidate.PNG)
+![](flujograma/help.PNG)
 
 ## 5. Características técnicas
 
