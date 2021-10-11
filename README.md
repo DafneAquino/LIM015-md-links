@@ -31,7 +31,7 @@ consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
 
 La libreria se instala mediante la siguiente vía:
 
- `npm install --marklink <DafneAquino>/md-links`
+ `npm i marklink`
 
 
 Una vez que el usuario tenga instalada la librería *marklink*, va a tener las siguientes herramientas:
