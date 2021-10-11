@@ -23,8 +23,8 @@ consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
 
 ## 2. Diagrama de Flujo
 
-![](flujograma\\mdLinks-API.png)
-![](flujograma\\mdLinks-CLI.png)
+![](flujograma/mdLinks-API.png)
+![](flujograma/mdLinks-CLI.png)
 
 ## 3. Documentación técnica de la librería
 
@@ -34,13 +34,13 @@ consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
 ## 4. Guía de uso e instalación de la librería
 
 file
-![](flujograma\\file.png)
+![](flujograma/file.png)
 
-![](flujograma\\validate.png)
-![](flujograma\\stats.png)
-![](flujograma\\statsYvalidate.png)
-![](flujograma\\help.png)
-![](flujograma\\io.jpg)
+![](flujograma/validate.png)
+![](flujograma/stats.png)
+![](flujograma/statsYvalidate.png)
+![](flujograma/help.png)
+![](flujograma/io.jpg)
 
 
 ## 5. Características técnicas
