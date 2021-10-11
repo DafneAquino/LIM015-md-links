@@ -4,9 +4,9 @@
 
 - [1. Resumen del proyecto](#1-resumen-del-proyecto)
 - [2. Diagrama de Flujo](#2-diagrama-de-flujo)
-- [3. Documentación técnica de la librería](#3-documentación-técnica-de-la-librería)
-- [4. Guía de uso e instalación de la librería](#4-guía-de-uso-e-instalación-de-la-librería)
-- [5. Características técnicas](#5-características-técnicas)
+- [3. Instalación y guía de uso de la librería](#4-instalación-y-guía-de-uso-de-la-librería)
+- [4. Características técnicas](#5-características-técnicas)
+- [5. Autora](#5-autora)
 
 ---
 
@@ -56,7 +56,7 @@ Una vez que el usuario tenga instalada la librería *marklink*, va a tener las s
 
 ![help](flujograma/help.PNG)
 
-## 5. Características técnicas
+## 4. Características técnicas
 
 El proyecto se realizó bajo estas características técnicas de javascript y node:
 
@@ -238,6 +238,6 @@ El proyecto se realizó bajo estas características técnicas de javascript y no
   - [The Complete Guide to Status Codes for Meaningful ReST APIs - dev.to](https://dev.to/khaosdoctor/the-complete-guide-to-status-codes-for-meaningful-rest-apis-1-5c5)
   </p></details>
 
-## 6. Autora
+## 5. Autora
 
 Dafne Aquino Manyari - LIM015 Laboratoria.
